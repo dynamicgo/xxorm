@@ -81,8 +81,8 @@ func WithConfig(config config.Config) error {
 }
 
 func loadDB(config config.Config, name string) (*xorm.Engine, error) {
-	driver := config.Get(name, "driver").String("driver")
-	source := config.Get(name, "source").String("source")
+	driver := config.Get("database", name, "driver").String("driver")
+	source := config.Get("database", name, "source").String("source")
 
 	return xorm.NewEngine(driver, source)
 }
