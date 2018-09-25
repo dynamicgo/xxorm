@@ -61,11 +61,15 @@ func Sync(name string, engine *xorm.Engine) error {
 // WithConfig .
 func WithConfig(config config.Config) error {
 	for name, handlers := range register.handlers {
+		register.DebugF("load db: %s", name)
+
 		db, err := loadDB(config, name)
 
 		if err != nil {
 			return err
 		}
+
+		register.DebugF("sync db: %s", name)
 
 		err = db.Sync2(handlers()...)
 
