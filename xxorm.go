@@ -44,7 +44,7 @@ func Paged(session *xorm.Session, page Page) *xorm.Session {
 		if page.Order == DESC {
 			session = session.Desc(page.OrderBy)
 		} else {
-			session = session.Desc(page.OrderBy)
+			session = session.Asc(page.OrderBy)
 		}
 	}
 
