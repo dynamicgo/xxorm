@@ -28,7 +28,7 @@ func Run(appname string) {
 
 	logger.InfoF("start db sync %s", appname)
 
-	configpath := flag.String("config", "", "special the mesh app config file")
+	configpath := flag.String("config", "./syncdb.json", "special the mesh app config file")
 
 	flag.Parse()
 
