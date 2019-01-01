@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/dynamicgo/xerrors"
+
 	config "github.com/dynamicgo/go-config"
 	"github.com/dynamicgo/slf4go"
 	"github.com/go-xorm/xorm"
@@ -66,7 +68,7 @@ func WithConfig(config config.Config) error {
 		db, err := loadDB(config, name)
 
 		if err != nil {
-			return err
+			return xerrors.Wrapf(err, "load db %s error", name)
 		}
 
 		register.DebugF("sync db: %s", name)
@@ -76,7 +78,7 @@ func WithConfig(config config.Config) error {
 		db.Close()
 
 		if err != nil {
-			return err
+			return xerrors.Wrapf(err, "db.Sync2 error")
 		}
 
 	}

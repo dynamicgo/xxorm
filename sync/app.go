@@ -40,7 +40,7 @@ func Run(appname string) {
 	}
 
 	if err := WithConfig(config); err != nil {
-		logger.Info(fmt.Sprintf("load slf4go config error: %s", err))
+		logger.Info(fmt.Sprintf("sync db error: %s", err))
 		return
 	}
 
